@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Water@School is Cool | Top Coolers</title>
+<meta name="description" content="Water@School is Cool: a Top Coolers initiative helping schools create daily healthy hydration habits. Book a free assessment for your school.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1C618E;
+    --mid-blue: #2A8FCF;
+    --sky: #1FC2F4;
+    --body: #363636;
+    --grey-bg: #F5F5F5;
+    --offer-bg: #C9F5D3;
+    --offer-text: #0B5D33;
+    --footer: #212121;
+    --line: #E0E0E0;
+    --card-line: #CDEEFC;
+    --card-shadow: #D2ECF4;
+    --check: #00B38F;
+    --muted: #616161;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: 'Work Sans', Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--body);
+    background: #fff;
+    -webkit-font-smoothing: antialiased;
+  }
+  img { max-width: 100%; height: auto; display: block; }
+  h1, h2, h3, h4, p { margin: 0; }
+  a { color: inherit; }
+  .container { width: 100%; max-width: 1248px; margin: 0 auto; padding: 0 24px; }
+
+  /* ---------- Header ---------- */
+  .site-header { background: #fff; position: relative; z-index: 20; }
+  .header-inner {
+    height: 90px; display: flex; align-items: center; justify-content: space-between;
+    padding: 0 60px; max-width: 1440px; margin: 0 auto;
+  }
+  .brand img { width: 242px; height: auto; }
+  .main-nav { display: flex; align-items: center; gap: 36px; }
+  .main-nav a.nav-link {
+    font-size: 15px; font-weight: 700; text-transform: uppercase; letter-spacing: .3px;
+    color: var(--navy); text-decoration: none; padding: 6px 0; border-bottom: 2px solid transparent;
+  }
+  .main-nav a.nav-link:hover { color: var(--sky); }
+  .main-nav a.nav-link.active { color: var(--sky); border-bottom-color: var(--sky); }
+  .main-nav a.nav-link .at { color: var(--navy); }
+  .btn-enquire {
+    display: inline-block; background: var(--navy); color: #fff; text-decoration: none;
+    font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: .3px;
+    padding: 10px 20px; border-radius: 6px; margin-left: 0;
+  }
+  .btn-enquire:hover { background: #164e73; }
+  .menu-toggle {
+    display: none; background: none; border: 0; padding: 10px 0; cursor: pointer; width: 30px;
+  }
+  .menu-toggle span { display: block; height: 2px; background: var(--navy); border-radius: 2px; }
+  .menu-toggle span + span { margin-top: 6px; }
+
+  /* ---------- Offer strip ---------- */
+  .offer-strip {
+    background: var(--offer-bg); color: var(--offer-text); text-align: center;
+    padding: 12px 24px; font-size: 16px; line-height: 26px;
+  }
+  .offer-strip strong { font-weight: 600; }
+  .offer-strip a { display: inline-block; font-weight: 600; color: var(--offer-text); text-decoration: underline; }
+  .offer-strip .offer-ends { font-weight: 400; }
+
+  /* ---------- Hero ---------- */
+  .hero { padding: 136px 0 138px; }
+  .hero-grid {
+    display: grid; grid-template-columns: 600px 1fr; gap: 60px; align-items: center;
+    max-width: 1248px; margin: 0 auto; padding: 0 24px;
+  }
+  .hero-logo { text-align: center; }
+  .hero-logo img { width: 544px; margin: 0 auto; }
+  .tagline {
+    margin-top: 18px; font-size: 15px; font-weight: 600; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--navy); line-height: 1.4;
+  }
+  .hero-copy h1 {
+    font-size: 40px; line-height: 1.28; font-weight: 600; color: var(--navy); letter-spacing: .3px;
+  }
+  .hero-copy p { margin-top: 26px; font-size: 15px; line-height: 27px; max-width: 540px; }
+  .hero-copy .cta-label { margin-top: 42px; font-size: 17px; font-weight: 600; color: var(--navy); line-height: 1.4; }
+  .btn-primary {
+    display: inline-block; background: var(--navy); color: #fff; text-decoration: none;
+    font-size: 14px; font-weight: 500; text-transform: uppercase; letter-spacing: .3px;
+    padding: 13px 40px; border-radius: 8px; margin-top: 10px; text-align: center; border: 0;
+  }
+  .btn-primary:hover { background: #164e73; }
+
+  /* ---------- Section basics ---------- */
+  .section { padding: 90px 0; }
+  .section.grey { background: var(--grey-bg); }
+  .section-title {
+    text-align: center; color: var(--navy); font-size: 32px; font-weight: 700; line-height: 1.3;
+  }
+  .section-sub { text-align: center; margin: 20px auto 0; max-width: 720px; font-size: 15px; line-height: 27px; }
+
+  /* ---------- 3 E's ---------- */
+  .three-e { padding: 88px 0 210px; }
+  .e-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 52px; isolation: isolate; }
+  .e-card {
+    position: relative; background: #fff; border: 2px solid var(--card-line); border-radius: 14px;
+    padding: 30px 34px 40px; text-align: center;
+  }
+  .e-card::before { /* coloured top bar */
+    content: ""; position: absolute; left: -2px; right: -2px; top: -2px; height: 10px;
+    background: var(--accent); border-radius: 14px 14px 0 0;
+  }
+  .e-card::after { /* offset shadow block */
+    content: ""; position: absolute; left: -12px; right: 8px; top: 18px; bottom: -22px;
+    background: var(--card-shadow); border-radius: 14px; z-index: -1;
+  }
+  .e-card .num {
+    width: 44px; height: 44px; border-radius: 50%; background: var(--accent);
+    color: #fff; font-size: 15px; font-weight: 700; display: flex; align-items: center; justify-content: center;
+  }
+  .e-card.c3 .num { color: #0f3550; }
+  .e-card .e-img { height: 190px; display: flex; align-items: center; justify-content: center; margin-top: 4px; }
+  .e-card .e-img img { max-height: 190px; width: auto; }
+  .e-card h3 { margin-top: 26px; font-size: 24px; font-weight: 700; color: var(--navy); letter-spacing: .3px; line-height: 1.2; }
+  .e-card .e-sub { margin-top: 12px; font-size: 17px; font-weight: 500; font-style: italic; color: var(--navy); line-height: 1.4; }
+  .e-card .e-text { margin-top: 14px; font-size: 15px; line-height: 27px; }
+
+  /* ---------- Benefits ---------- */
+  .benefits { padding: 92px 0 146px; }
+  .benefit-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 50px; }
+  .benefit {
+    border: 1px solid var(--line); border-radius: 14px; padding: 34px 26px 36px; text-align: center; background: #fff;
+  }
+  .benefit svg { width: 36px; height: 36px; color: var(--sky); margin: 0 auto; display: block; }
+  .benefit h3 { margin-top: 14px; font-size: 18px; font-weight: 700; color: var(--navy); line-height: 1.4; }
+  .benefit p { margin-top: 10px; font-size: 15px; line-height: 24px; }
+
+  /* ---------- How it works ---------- */
+  .how { padding: 92px 0 160px; }
+  .how-grid { display: grid; grid-template-columns: 600px 1fr; gap: 60px; align-items: center; margin-top: 56px; }
+  .how-photo { position: relative; isolation: isolate; }
+  .how-photo img { width: 100%; border-radius: 16px; }
+  .how-photo::after {
+    content: ""; position: absolute; left: -10px; right: 10px; top: 20px; bottom: -20px;
+    background: var(--card-shadow); border-radius: 16px; z-index: -1;
+  }
+  .steps { display: grid; gap: 20px; }
+  .step {
+    background: #fff; border-radius: 14px; padding: 26px 30px 28px; display: grid;
+    grid-template-columns: 52px 1fr; gap: 20px; align-items: start;
+  }
+  .step .n {
+    width: 52px; height: 52px; border-radius: 50%; background: var(--navy); color: #fff;
+    font-size: 20px; font-weight: 700; display: flex; align-items: center; justify-content: center;
+  }
+  .step h3 { font-size: 22px; font-weight: 700; color: var(--navy); line-height: 1.3; }
+  .step p { margin-top: 4px; font-size: 16px; line-height: 26px; }
+
+  /* ---------- Trusted ---------- */
+  .trusted { padding: 122px 0 120px; }
+  .logos { display: grid; grid-template-columns: repeat(5, 1fr); gap: 24px; max-width: 1120px; margin: 36px auto 0; }
+  .logo-card {
+    height: 112px; border: 1px solid var(--line); border-radius: 14px; background: #fff;
+    display: flex; align-items: center; justify-content: center; padding: 14px;
+  }
+  .logo-card img { max-height: 82px; width: auto; }
+  .logo-card.fnb img { max-height: 62px; }
+  .logo-card.rewardsco img { max-height: 80px; }
+  .logo-card.toyota img { max-height: 66px; }
+  .logo-card.talksure img { max-height: 78px; }
+  .logo-card.tsebo img { max-height: 28px; }
+  .quote { text-align: center; margin-top: 50px; }
+  .quote svg { width: 40px; height: 34px; color: var(--sky); margin: 0 auto; display: block; }
+  .quote blockquote {
+    margin: 16px auto 0; max-width: 900px; font-size: 24px; line-height: 36px; font-style: italic; font-weight: 400;
+  }
+  .quote .attr { margin-top: 26px; font-size: 15px; color: var(--muted); }
+  .quote .attr strong { color: var(--navy); font-weight: 700; }
+
+  /* ---------- Form ---------- */
+  .enquire { padding: 92px 0 120px; scroll-margin-top: 0; }
+  .enquire .tc-note { text-align: center; font-size: 12px; font-weight: 600; color: #9E9E9E; margin-top: 4px; line-height: 1.4; }
+  .enquire-grid {
+    display: grid; grid-template-columns: 490px 500px; justify-content: space-between;
+    max-width: 1080px; margin: 48px auto 0;
+  }
+  .features { grid-row: 1; grid-column: 1; }
+  .form-col { grid-row: 1; grid-column: 2; }
+  .feature + .feature { margin-top: 24px; }
+  .feature h3 {
+    display: flex; align-items: center; gap: 14px;
+    font-size: 20px; font-weight: 600; color: var(--navy); line-height: 1.4;
+  }
+  .feature h3 svg { width: 24px; height: 24px; flex: none; color: var(--check); }
+  .feature p { margin-top: 6px; font-size: 15px; line-height: 26px; }
+  .enquiry-form { display: grid; grid-template-columns: 1fr 1fr; gap: 20px 16px; }
+  .enquiry-form .full { grid-column: 1 / -1; }
+  .enquiry-form input, .enquiry-form select {
+    width: 100%; height: 52px; border: 1px solid #DDDEDF; border-radius: 14px; background: #fff;
+    font: inherit; font-size: 15px; color: var(--body); padding: 0 18px; outline: none;
+  }
+  .enquiry-form input::placeholder { color: #757575; }
+  .enquiry-form select { padding: 0 18px 0 22px; cursor: pointer; }
+  .enquiry-form select:invalid { color: var(--body); }
+  .enquiry-form input:focus, .enquiry-form select:focus { border-color: var(--sky); box-shadow: 0 0 0 3px rgba(31,194,244,.18); }
+  .enquiry-form .btn-submit {
+    grid-column: 1 / -1; height: 50px; border: 0; border-radius: 14px; background: var(--navy); color: #fff;
+    font: inherit; font-size: 15px; font-weight: 700; text-transform: uppercase; letter-spacing: .3px; cursor: pointer;
+  }
+  .enquiry-form .btn-submit:hover { background: #164e73; }
+  .form-message { grid-column: 1 / -1; display: none; text-align: center; font-weight: 500; color: var(--offer-text); }
+  .call-us { text-align: center; margin-top: 30px; font-size: 14px; font-weight: 700; color: var(--navy); line-height: 18px; text-transform: uppercase; }
+  .call-us a { color: var(--navy); }
+
+  /* ---------- Footer ---------- */
+  .terms { background: var(--footer); color: #fff; text-align: center; padding: 54px 24px 58px; }
+  .terms h2 { font-size: 19px; font-weight: 700; line-height: 1.4; }
+  .terms p { margin-top: 16px; font-size: 15px; line-height: 26px; }
+  .terms a { color: #fff; }
+  .copyright { background: var(--navy); color: #fff; text-align: center; padding: 20px 24px; font-size: 15px; line-height: 26px; }
+  .copyright a { color: #fff; }
+
+  /* ---------- Tablet: collapse main menu ---------- */
+  @media (max-width: 1180px) {
+    .header-inner { padding: 0 32px; }
+    .main-nav { display: none; }
+    .menu-toggle { display: block; }
+    .site-header.open .main-nav {
+      display: flex; flex-direction: column; align-items: stretch; gap: 0;
+      position: absolute; top: 100%; left: 0; right: 0; background: #fff;
+      padding: 8px 24px 20px; box-shadow: 0 10px 20px rgba(0,0,0,.08);
+    }
+    .site-header.open .main-nav a.nav-link { padding: 14px 0; border-bottom: 1px solid var(--line); align-self: stretch; }
+    .site-header.open .main-nav a.nav-link.active { border-bottom: 2px solid var(--sky); }
+    .site-header.open .btn-enquire { margin-top: 18px; text-align: center; }
+    .hero-grid, .how-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+    .hero-logo img { width: 100%; }
+    .enquire-grid { grid-template-columns: 1fr 1fr; gap: 48px; }
+    .benefit-cards { grid-template-columns: repeat(2, 1fr); }
+    .logos { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 900px) {
+    .e-cards { grid-template-columns: 1fr; max-width: 520px; margin-left: auto; margin-right: auto; gap: 40px; }
+  }
+
+  /* ---------- Phone ---------- */
+  @media (max-width: 767px) {
+    body { font-size: 15px; }
+    .container { padding: 0 24px; }
+    .header-inner { height: 70px; padding: 0 28px 0 20px; }
+    .brand img { width: 180px; }
+    .menu-toggle { width: 28px; }
+    .menu-toggle span { height: 2px; }
+    .menu-toggle span + span { margin-top: 7px; }
+
+    .offer-strip { padding: 14px 24px 12px; font-size: 15px; line-height: 23px; }
+    .offer-strip strong { font-size: 16px; }
+    .offer-strip .offer-ends { display: none; }
+    .offer-strip a { font-weight: 400; display: block; }
+
+    .hero { padding: 40px 0 46px; }
+    .hero-grid { grid-template-columns: 1fr; gap: 26px; padding: 0 24px; }
+    .hero-logo img { width: 250px; }
+    .tagline { margin-top: 18px; font-size: 11px; letter-spacing: .5px; font-weight: 600; }
+    .hero-copy h1 { font-size: 30px; line-height: 36px; letter-spacing: 0; }
+    .hero-copy p { margin-top: 18px; font-size: 16px; line-height: 25px; }
+    .hero-copy .cta-label { display: none; }
+    .hero-copy .btn-primary { display: block; width: 100%; margin-top: 20px; font-size: 15px; padding: 12px 20px; border-radius: 10px; }
+    .hero-copy .full-copy { display: none; }
+    .hero-copy .short-copy { display: block; }
+
+    .section-title { font-size: 26px; line-height: 32px; }
+    .section-sub { font-size: 15px; line-height: 24px; margin-top: 16px; }
+
+    .three-e { padding: 58px 0 50px; }
+    .e-cards { margin-top: 36px; gap: 34px; padding-left: 8px; }
+    .e-card { padding: 30px 24px 34px; border-radius: 16px; }
+    .e-card::before { height: 9px; border-radius: 16px 16px 0 0; }
+    .e-card::after { left: -10px; right: 8px; top: 16px; bottom: -16px; border-radius: 16px; }
+    .e-card .num { width: 40px; height: 40px; font-size: 14px; }
+    .e-card .e-img { height: 140px; margin-top: 22px; }
+    .e-card .e-img img { max-height: 140px; }
+    .e-card h3 { margin-top: 14px; font-size: 22px; }
+    .e-card .e-sub { margin-top: 10px; font-size: 16px; }
+    .e-card .e-text { margin-top: 12px; font-size: 15px; line-height: 24px; }
+
+    .benefits { padding: 56px 0 56px; }
+    .benefit-cards { grid-template-columns: 1fr; gap: 15px; margin-top: 34px; }
+    .benefit {
+      display: grid; grid-template-columns: 28px 1fr; gap: 0 20px; text-align: left; padding: 20px 16px 20px 22px;
+    }
+    .benefit svg { width: 28px; height: 28px; margin: 3px 0 0; grid-row: 1 / span 2; }
+    .benefit h3 { margin-top: 0; font-size: 17px; line-height: 1.4; }
+    .benefit p { margin-top: 2px; font-size: 15px; line-height: 24px; }
+
+    .how { padding: 56px 0 56px; }
+    .how-grid { grid-template-columns: 1fr; gap: 38px; margin-top: 30px; }
+    .how-photo { margin-left: 8px; }
+    .how-photo img { border-radius: 20px; }
+    .how-photo::after { left: -8px; right: 8px; top: 18px; bottom: -14px; border-radius: 20px; }
+    .steps { gap: 14px; }
+    .step { grid-template-columns: 40px 1fr; gap: 16px; padding: 20px 20px 24px; border-radius: 16px; }
+    .step .n { width: 40px; height: 40px; font-size: 16px; }
+    .step h3 { font-size: 18px; }
+    .step p { margin-top: 2px; font-size: 15px; line-height: 24px; }
+
+    .trusted { padding: 56px 0 56px; }
+    .logos { grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 28px; }
+    .logo-card { height: 86px; border-radius: 16px; }
+    .logo-card.tsebo { grid-column: 1 / -1; }
+    .logo-card.fnb img { max-height: 48px; }
+    .logo-card.rewardsco img { max-height: 62px; }
+    .logo-card.toyota img { max-height: 52px; }
+    .logo-card.talksure img { max-height: 62px; }
+    .logo-card.tsebo img { max-height: 28px; }
+    .quote { margin-top: 36px; }
+    .quote svg { width: 32px; height: 28px; }
+    .quote blockquote { font-size: 19px; line-height: 29px; margin-top: 14px; }
+    .quote .attr { margin-top: 12px; line-height: 20px; }
+    .quote .attr .sep { display: none; }
+    .quote .attr .since { display: block; }
+
+    .enquire { padding: 56px 0 56px; }
+    .enquire .tc-note { font-size: 12px; margin-top: 0; }
+    .enquire-grid { grid-template-columns: 1fr; gap: 0; margin-top: 28px; }
+    .form-col { grid-column: 1; grid-row: 1; }
+    .features { grid-column: 1; grid-row: 2; margin-top: 42px; }
+    .enquiry-form { grid-template-columns: 1fr; gap: 14px; }
+    .enquiry-form .btn-submit { margin-top: 4px; }
+    .enquiry-form input, .enquiry-form select { height: 52px; border-radius: 16px; font-size: 15px; }
+    .enquiry-form .btn-submit { height: 52px; border-radius: 16px; font-size: 15px; }
+    .call-us { margin-top: 28px; }
+    .feature + .feature { margin-top: 24px; }
+    .feature h3 { font-size: 17px; gap: 12px; }
+    .feature h3 svg { width: 22px; height: 22px; }
+    .feature p { margin-top: 6px; font-size: 15px; line-height: 24px; }
+
+    .terms { padding: 48px 24px 34px; }
+    .terms h2 { font-size: 18px; }
+    .terms p { margin-top: 14px; font-size: 14px; line-height: 24px; }
+    .copyright { padding: 12px 40px 16px; font-size: 14px; line-height: 21px; }
+  }
+  .short-copy { display: none; }
+</style>
+</head>
+<body>
+
+<header class="site-header" id="top">
+  <div class="header-inner">
+    <a class="brand" href="https://topcoolers.co.za/" aria-label="Top Coolers home">
+      <img src="assets/top-coolers-logo.png" alt="Top Coolers: Constantly Pure, Constantly Available" width="366" height="88">
+    </a>
+    <nav class="main-nav" id="main-nav" aria-label="Main menu">
+      <a class="nav-link" href="https://topcoolers.co.za/#why-us">Why Us</a>
+      <a class="nav-link" href="https://topcoolers.co.za/#our-clients">Our Clients</a>
+      <a class="nav-link" href="https://topcoolers.co.za/#our-range">Our Range</a>
+      <a class="nav-link active" href="./" aria-current="page">Water<span class="at">@</span>School is Cool</a>
+      <a class="btn-enquire" href="#book-assessment">Enquire Now</a>
+    </nav>
+    <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="main-nav">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- Time-limited offer: hidden automatically after 30 November 2026 (see script at the bottom). -->
+<div class="offer-strip" id="offer-strip">
+  <strong>Install Now, Pay Nothing Until 2027!</strong> <span class="offer-ends">Offer ends 30 November.</span><br>
+  <a href="#book-assessment">Book A Free Assessment</a>
+</div>
+
+<main>
+  <section class="hero">
+    <div class="hero-grid">
+      <div class="hero-logo">
+        <img src="assets/water-at-school-is-cool-logo.png" alt="Water@School is Cool" width="548" height="355">
+        <p class="tagline">Changing the way children think about water</p>
+      </div>
+      <div class="hero-copy">
+        <h1>Helping Children Create Healthy Drinking Habits</h1>
+        <p class="full-copy">A Top Coolers initiative helping schools create daily healthy hydration habits, through premium hydration solutions that support wellbeing and sustainability.</p>
+        <p class="short-copy">A Top Coolers initiative helping schools build healthy hydration habits.</p>
+        <p class="cta-label">Bring Cool Water To Your School</p>
+        <a class="btn-primary" href="#book-assessment">Book A Free Assessment</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section grey three-e">
+    <div class="container">
+      <h2 class="section-title">The 3 E’s Of Water@School is Cool</h2>
+      <div class="e-cards">
+        <article class="e-card c1" style="--accent: var(--navy)">
+          <div class="num">01</div>
+          <div class="e-img"><img src="assets/wally-the-waterman.png" alt="Wally the Waterman" width="231" height="288"></div>
+          <h3>EDUCATE</h3>
+          <p class="e-sub">Healthy Habits Start Early</p>
+          <p class="e-text">Teaching learners why drinking water matters, with Wally the Waterman showing them that water is cool.</p>
+        </article>
+        <article class="e-card c2" style="--accent: var(--mid-blue)">
+          <div class="num">02</div>
+          <div class="e-img"><img src="assets/waterlogic-cooler.png" alt="Waterlogic water cooler" width="93" height="263"></div>
+          <h3>EMPOWER</h3>
+          <p class="e-sub">Waterlogic Water Coolers</p>
+          <p class="e-text">Brand the water cooler with your school logo, so it becomes a hydration station learners own.</p>
+        </article>
+        <article class="e-card c3" style="--accent: var(--sky)">
+          <div class="num">03</div>
+          <div class="e-img"><img src="assets/reusable-bottle.png" alt="Reusable water bottle" width="96" height="284"></div>
+          <h3>ELIMINATE</h3>
+          <p class="e-sub">Single-Use Plastic</p>
+          <p class="e-text">A reusable bottle for every learner, cutting single-use plastic and keeping them drinking water all day.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section benefits">
+    <div class="container">
+      <h2 class="section-title">Benefits Of Drinking Water At School</h2>
+      <p class="section-sub">Easy access to clean water supports learners all through the school day, in the classroom and on the sports field.</p>
+      <div class="benefit-cards">
+        <div class="benefit">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+          <h3>Better Concentration</h3>
+          <p>Well-hydrated learners stay alert, focused and energised in class.</p>
+        </div>
+        <div class="benefit">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
+          <h3>Healthier Learners</h3>
+          <p>Water close by keeps growing bodies hydrated, and a hygienic cooler means fewer shared taps and bottles.</p>
+        </div>
+        <div class="benefit">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h14l-1.6 17.2a1 1 0 0 1-1 .8H7.6a1 1 0 0 1-1-.8z"/><path d="m2 2 20 20"/></svg>
+          <h3>Fewer Sugary Drinks</h3>
+          <p>When cool water is on hand, learners reach for it instead of fizzy and sugary drinks.</p>
+        </div>
+        <div class="benefit">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 20h10"/><path d="M10 20c5.5-2.5.8-6.4 3-10"/><path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"/><path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"/></svg>
+          <h3>Healthy Habits For Life</h3>
+          <p>Habits built at school stay with children as they grow, making water their first choice.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section grey how">
+    <div class="container">
+      <h2 class="section-title">How It Works</h2>
+      <p class="section-sub">One team from start to finish, with no third parties involved.</p>
+      <div class="how-grid">
+        <div class="how-photo">
+          <img src="assets/technician.jpg" alt="A Top Coolers technician installing a plumbed-in water cooler" width="672" height="468">
+        </div>
+        <div class="steps">
+          <div class="step">
+            <div class="n">1</div>
+            <div>
+              <h3>Assessment</h3>
+              <p>We visit your school to find the best places for your water coolers and check what’s needed for installation.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="n">2</div>
+            <div>
+              <h3>Installation</h3>
+              <p>Our own technicians install and connect your plumbed-in coolers, with minimal disruption to the school day.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="n">3</div>
+            <div>
+              <h3>Ongoing Servicing</h3>
+              <p>Regular servicing and maintenance by our team keep your coolers clean, safe and running.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section trusted">
+    <div class="container">
+      <h2 class="section-title">Trusted By South African Businesses And Schools</h2>
+      <p class="section-sub">Over 500 companies rely on us for their workplace hydration needs.</p>
+      <div class="logos">
+        <div class="logo-card fnb"><img src="assets/client-fnb.png" alt="FNB" width="174" height="100"></div>
+        <div class="logo-card rewardsco"><img src="assets/client-rewardsco.png" alt="Rewardsco" width="132" height="132"></div>
+        <div class="logo-card toyota"><img src="assets/client-toyota.png" alt="Toyota" width="150" height="105"></div>
+        <div class="logo-card talksure"><img src="assets/client-talksure.png" alt="Talksure" width="119" height="121"></div>
+        <div class="logo-card tsebo"><img src="assets/client-tsebo.png" alt="Tsebo" width="322" height="64"></div>
+      </div>
+      <figure class="quote" style="margin-left:0;margin-right:0">
+        <svg viewBox="0 0 40 34" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3C7 4 3 9 3 17v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2H3"/><path d="M36 3c-7 1-11 6-11 14v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2H25"/></svg>
+        <blockquote>We have found their service to be professional, reliable, and consistently of a high standard.</blockquote>
+        <figcaption class="attr"><strong>Redhill School, Sandton</strong><span class="sep"> · </span><span class="since">Top Coolers client since 2016</span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section grey enquire" id="book-assessment">
+    <div class="container">
+      <h2 class="section-title">Book A Free Assessment</h2>
+      <p class="tc-note">T&amp;C apply</p>
+      <div class="enquire-grid">
+        <div class="features">
+          <div class="feature">
+            <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg>Service &amp; Maintenance Included</h3>
+            <p>Enjoy hassle-free hydration with full service and maintenance included, ensuring your mains-fed cooler runs smoothly.</p>
+          </div>
+          <div class="feature">
+            <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg>Dedicated Customer Support</h3>
+            <p>Our team is ready to assist with any issues. From troubleshooting to routine maintenance we’ll keep your cooler performing at its best.</p>
+          </div>
+          <div class="feature">
+            <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg>Water Dispensers For Schools</h3>
+            <p>Premium water dispensers for schools — available in freestanding and countertop models.</p>
+          </div>
+          <div class="feature">
+            <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg>Hydrate Now</h3>
+            <p>Enjoy premium mains-fed coolers with hassle-free rental and full service included. Fill out the form for your free quote and start saving today.</p>
+          </div>
+        </div>
+
+        <div class="form-col">
+          <!-- Same fields as the existing Enquire Now form. Point "action" at that form's handler before going live. -->
+          <form class="enquiry-form" id="enquiry-form" method="post" action="#">
+            <input type="text" name="first_name" placeholder="First Name *" aria-label="First Name" autocomplete="given-name" required>
+            <input type="text" name="last_name" placeholder="Last Name *" aria-label="Last Name" autocomplete="family-name" required>
+            <input class="full" type="email" name="email" placeholder="Your Email *" aria-label="Your Email" autocomplete="email" required>
+            <input class="full" type="text" name="school_name" placeholder="School Name *" aria-label="School Name" autocomplete="organization" required>
+            <select class="full" name="number_of_learners" aria-label="Number of Learners" required>
+              <option value="" selected disabled>Number of Learners *</option>
+              <option value="0-300">0-300</option>
+              <option value="301-700">301-700</option>
+              <option value="701-1200">701-1 200</option>
+              <option value="1200+">1 200+</option>
+            </select>
+            <input type="tel" name="phone" placeholder="Phone Number *" aria-label="Phone Number" autocomplete="tel" required>
+            <input type="text" name="postal_code" placeholder="Postal Code *" aria-label="Postal Code" autocomplete="postal-code" inputmode="numeric" required>
+            <button class="btn-submit" type="submit">Submit</button>
+            <p class="form-message" id="form-message" role="status">Thank you! Our team will be in touch to book your free assessment.</p>
+          </form>
+          <p class="call-us">Call us now<br><a href="tel:0861100185">086 110 0185</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="terms">
+    <h2>Terms &amp; Conditions</h2>
+    <p>Applies to new rental agreements only, premises must be located within <a href="https://topvending.co.za/">Top Vending</a>’s serviceable area.<br>Standard <a href="https://topvending.co.za/">Top Vending</a> Rental Agreement terms &amp; conditions apply.</p>
+  </div>
+  <div class="copyright">© 2026. TopCoolers brought to you by <a href="https://topvending.co.za/">Top Vending</a>. All Rights Reserved.</div>
+</footer>
+
+<script>
+  // Remove the green offer strip after 30 November 2026 (South African time).
+  (function () {
+    var offerEnds = new Date('2026-12-01T00:00:00+02:00');
+    if (new Date() >= offerEnds) {
+      var strip = document.getElementById('offer-strip');
+      if (strip) strip.remove();
+    }
+  })();
+
+  // Mobile / tablet menu
+  (function () {
+    var header = document.querySelector('.site-header');
+    var toggle = header.querySelector('.menu-toggle');
+    toggle.addEventListener('click', function () {
+      var open = header.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    });
+    header.querySelectorAll('.main-nav a').forEach(function (a) {
+      a.addEventListener('click', function () {
+        header.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  })();
+
+  // Enquiry form: until it is wired to the live Enquire Now handler, show a confirmation instead of posting.
+  (function () {
+    var form = document.getElementById('enquiry-form');
+    form.addEventListener('submit', function (e) {
+      if (form.getAttribute('action') !== '#') return;
+      e.preventDefault();
+      document.getElementById('form-message').style.display = 'block';
+      form.querySelector('.btn-submit').disabled = true;
+    });
+  })();
+</script>
+</body>
+</html>
