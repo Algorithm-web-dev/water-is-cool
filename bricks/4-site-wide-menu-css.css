@@ -1,6 +1,10 @@
 /* Paste into Bricks > Settings > Custom code > Custom CSS (site-wide).
    The "Water@School is Cool" tab uses the same colours as the other tabs (navy, light blue on hover).
-   This only keeps the @ navy and adds a sky-blue underline while you're on the page. */
+   This keeps the @ navy and shows a sky-blue underline only while you hover over the tab. */
 .wasc-nav-at { color: #1C618E; }
-.menu-wasc.current-menu-item > a,
-.menu-wasc > a[aria-current="page"] { border-bottom: 2px solid #1FC2F4; }
+.menu-wasc > a:hover {
+  text-decoration: underline;
+  text-decoration-color: #1FC2F4;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 8px;
+}
