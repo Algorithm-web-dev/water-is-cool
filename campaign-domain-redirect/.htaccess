@@ -1,0 +1,5 @@
+# Upload to the web root of wateratschooliscool.co.za (e.g. public_html on xneelo).
+# Sends every visit, with or without www, http or https, to the page on the main site.
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^(www\.)?wateratschooliscool\.co\.za$ [NC]
+RewriteRule ^ https://topcoolers.co.za/wateratschool/ [R=301,L]

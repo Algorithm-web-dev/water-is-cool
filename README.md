@@ -10,5 +10,6 @@ Landing page for the Water@School is Cool schools campaign, a new tab on topcool
 - **Enquiry form:** the form has the same fields as the existing Enquire Now form (First Name, Last Name, Your Email, School Name, Number of Learners, Phone Number, Postal Code). Set the form's `action` to the live Enquire Now handler. Until then it shows a thank-you message instead of posting.
 - **Offer strip:** the green "Install Now, Pay Nothing Until 2027!" strip removes itself automatically after 30 November 2026 (SAST). You can also delete the `#offer-strip` block.
 - **Main menu links:** Why Us / Our Clients / Our Range point at `https://topcoolers.co.za/#…` placeholders. Swap in the real URLs.
-- **Domain:** point `wateratschooliscool.co.za` (the address on the banner and QR code) straight to this page.
+- **Where it lives:** the page goes inside the main site at `https://topcoolers.co.za/wateratschool/`. On a plain Apache/static site, upload `index.html` and `assets/` into a `wateratschool` folder in the web root.
+- **Campaign domain:** `wateratschooliscool.co.za` (the address on the banner and QR code) 301-redirects to that page. Upload `campaign-domain-redirect/.htaccess` to that domain's web root, or set the same redirect in the xneelo control panel. Test with and without `www`, and by scanning the QR code.
 - **Images:** the assets were cut from the mockup PDF. Replace them with the original files if you have them for sharper results.
