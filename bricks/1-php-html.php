@@ -2,8 +2,8 @@
 /* ---------- SETTINGS: check these two before publishing ---------- */
 // Folder the wasc-*.png / .jpg images were uploaded to (Media Library puts them in /uploads/YEAR/MONTH/).
 $wasc_img_folder = '/wp-content/uploads/2026/10/';
-// Who receives the "Book A Free Assessment" enquiries (default: the site admin email).
-$wasc_to = get_option( 'admin_email' );
+// Who receives the "Book A Free Assessment" enquiries (same inbox as the Enquire Now form).
+$wasc_to = 'sales@topvending.co.za';
 /* ----------------------------------------------------------------- */
 
 $u               = esc_url( $wasc_img_folder );

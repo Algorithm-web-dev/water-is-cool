@@ -25,7 +25,7 @@ Everything goes into a single Bricks **Code** element on a new WordPress page. T
 2. Paste the three files into the matching panels (PHP & HTML, CSS, JavaScript).
 3. Check the two settings at the top of the PHP & HTML panel:
    - `$wasc_img_folder`: the uploads folder from step 1.
-   - `$wasc_to`: the email address that should receive the enquiries (by default the site's admin email). For example `$wasc_to = 'sales@topcoolers.co.za';`
+   - `$wasc_to`: the email address that receives the enquiries. It's set to `sales@topvending.co.za`, the same inbox as the Enquire Now form.
 4. Turn on **Execute code**. The form and images need PHP.
    - If the toggle is greyed out, enable it under **Bricks → Settings → Custom code → Code execution** (administrators).
    - Newer Bricks versions also ask you to **sign** the code. Use the sign button on the element, or **Bricks → Settings → Custom code → Code signatures**. Sign again after every edit.
@@ -38,7 +38,7 @@ Everything goes into a single Bricks **Code** element on a new WordPress page. T
 4. Paste `4-site-wide-menu-css.css` into **Bricks → Settings → Custom code → Custom CSS**.
 
 ## 5. Test
-- Submit the form once and check the email arrives. It is sent with WordPress's normal mail, so it uses the same email setup (e.g. WP Mail SMTP) as the rest of the site. If nothing arrives, check that setup first.
+- Submit the form once and check the email arrives at sales@topvending.co.za. It goes through WP Mail SMTP like the other forms, and shows in **WP Mail Logging → Email Log** with the subject *Water@School is Cool: Free Assessment request from [school]*. These enquiries arrive by email only; they don't appear under **Bricks → Form submissions**.
 - Click every **Book A Free Assessment** link (green strip, hero button): they should jump to the form.
 - Check the page on a phone.
 
