@@ -1,0 +1,202 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap');
+
+/* Water@School is Cool landing page. Everything is scoped to .wasc so it can't affect the rest of the site. */
+.wasc { font-family: 'Work Sans', Arial, sans-serif; font-size: 15px; line-height: 1.8; color: #363636; background: #fff; -webkit-font-smoothing: antialiased; width: 100%; }
+/* Neutralise theme typography inside the page */
+.wasc h1, .wasc h2, .wasc h3, .wasc p, .wasc blockquote, .wasc figure { font-family: inherit; text-transform: none; letter-spacing: normal; padding: 0; border: 0; }
+.wasc h1::before, .wasc h2::before, .wasc h3::before, .wasc blockquote::before, .wasc blockquote::after { content: none; }
+.wasc blockquote { background: none; quotes: none; }
+.wasc .wasc-terms h2 { color: #fff; }
+.wasc .wasc-quote blockquote { color: #363636; }
+.wasc a:hover { opacity: 1; }
+.wasc #book-assessment { scroll-margin-top: 110px; }
+.wasc .wasc-form-error { grid-column: 1 / -1; margin: 0; color: #b3261e; font-weight: 500; text-align: center; }
+.wasc .wasc-hp { position: absolute !important; left: -9999px !important; width: 1px; height: 1px; overflow: hidden; }
+.wasc .wasc-thanks { background: #fff; border-radius: 14px; padding: 36px 28px; text-align: center; }
+.wasc .wasc-thanks h3 { font-size: 22px; font-weight: 700; color: #1C618E; line-height: 1.3; }
+.wasc .wasc-thanks p { margin-top: 10px; }
+
+.wasc { --navy: #1C618E; --mid-blue: #2A8FCF; --sky: #1FC2F4; --body: #363636; --grey-bg: #F5F5F5; --offer-bg: #C9F5D3; --offer-text: #0B5D33; --footer: #212121; --line: #E0E0E0; --card-line: #CDEEFC; --card-shadow: #D2ECF4; --check: #00B38F; --muted: #616161; }
+.wasc, .wasc *, .wasc *::before, .wasc *::after { box-sizing: border-box; }
+.wasc img { max-width: 100%; height: auto; display: block; }
+.wasc h1, .wasc h2, .wasc h3, .wasc h4, .wasc p { margin: 0; }
+.wasc a { color: inherit; }
+.wasc .wasc-container { width: 100%; max-width: 1248px; margin: 0 auto; padding: 0 24px; }
+.wasc .wasc-offer-strip { background: var(--offer-bg); color: var(--offer-text); text-align: center; padding: 12px 24px; font-size: 16px; line-height: 26px; }
+.wasc .wasc-offer-strip strong { font-weight: 600; }
+.wasc .wasc-offer-strip a { display: inline-block; font-weight: 600; color: var(--offer-text); text-decoration: underline; }
+.wasc .wasc-offer-strip .wasc-offer-ends { font-weight: 400; }
+.wasc .wasc-hero { padding: 136px 0 138px; }
+.wasc .wasc-hero-grid { display: grid; grid-template-columns: 600px 1fr; gap: 60px; align-items: center; max-width: 1248px; margin: 0 auto; padding: 0 24px; }
+.wasc .wasc-hero-logo { text-align: center; }
+.wasc .wasc-hero-logo img { width: 544px; margin: 0 auto; }
+.wasc .wasc-tagline { margin-top: 18px; font-size: 15px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--navy); line-height: 1.4; }
+.wasc .wasc-hero-copy h1 { font-size: 41px; line-height: 1.26; font-weight: 600; color: var(--navy); letter-spacing: .3px; }
+.wasc .wasc-hero-copy p { margin-top: 26px; font-size: 15px; line-height: 27px; max-width: 538px; }
+.wasc .wasc-hero-copy .wasc-cta-label { margin-top: 42px; font-size: 17px; font-weight: 600; color: var(--navy); line-height: 1.4; }
+.wasc .wasc-btn-primary { display: inline-block; background: var(--navy); color: #fff; text-decoration: none; font-size: 14px; font-weight: 500; text-transform: uppercase; letter-spacing: .3px; padding: 13px 40px; border-radius: 8px; margin-top: 10px; text-align: center; border: 0; }
+.wasc .wasc-btn-primary:hover { background: #164e73; }
+.wasc .wasc-section { padding: 90px 0; }
+.wasc .wasc-section.wasc-grey { background: var(--grey-bg); }
+.wasc .wasc-section-title { text-align: center; color: var(--navy); font-size: 32px; font-weight: 700; line-height: 1.3; }
+.wasc .wasc-section-sub { text-align: center; margin: 20px auto 0; max-width: 710px; font-size: 15px; line-height: 27px; }
+.wasc .wasc-three-e { padding: 88px 0 210px; }
+.wasc .wasc-e-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 52px; isolation: isolate; }
+.wasc .wasc-e-card { position: relative; background: #fff; border: 2px solid var(--card-line); border-radius: 14px; padding: 30px 34px 40px; text-align: center; }
+.wasc .wasc-e-card::before { content: ""; position: absolute; left: -2px; right: -2px; top: -2px; height: 10px; background: var(--accent); border-radius: 14px 14px 0 0; }
+.wasc .wasc-e-card::after { content: ""; position: absolute; left: -12px; right: 8px; top: 18px; bottom: -22px; background: var(--card-shadow); border-radius: 14px; z-index: -1; }
+.wasc .wasc-e-card .wasc-num { width: 44px; height: 44px; border-radius: 50%; background: var(--accent); color: #fff; font-size: 15px; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+.wasc .wasc-e-card.wasc-c3 .wasc-num { color: #0f3550; }
+.wasc .wasc-e-card .wasc-e-img { height: 190px; display: flex; align-items: center; justify-content: center; margin-top: 4px; }
+.wasc .wasc-e-card .wasc-e-img img { max-height: 190px; width: auto; }
+.wasc .wasc-e-card h3 { margin-top: 26px; font-size: 24px; font-weight: 700; color: var(--navy); letter-spacing: .3px; line-height: 1.2; }
+.wasc .wasc-e-card .wasc-e-sub { margin-top: 12px; font-size: 17px; font-weight: 500; font-style: italic; color: var(--navy); line-height: 1.4; }
+.wasc .wasc-e-card .wasc-e-text { margin-top: 14px; font-size: 15px; line-height: 27px; }
+.wasc .wasc-benefits { padding: 92px 0 146px; }
+.wasc .wasc-benefit-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 50px; }
+.wasc .wasc-benefit { border: 1px solid var(--line); border-radius: 14px; padding: 34px 28px 36px; text-align: center; background: #fff; }
+.wasc .wasc-benefit svg { width: 36px; height: 36px; color: var(--sky); margin: 0 auto; display: block; }
+.wasc .wasc-benefit h3 { margin-top: 14px; font-size: 18px; font-weight: 700; color: var(--navy); line-height: 1.4; }
+.wasc .wasc-benefit p { margin-top: 10px; font-size: 15px; line-height: 24px; }
+.wasc .wasc-how { padding: 92px 0 118px; }
+.wasc .wasc-how-grid { display: grid; grid-template-columns: 600px 1fr; gap: 60px; align-items: center; margin-top: 56px; }
+.wasc .wasc-how-photo { position: relative; isolation: isolate; }
+.wasc .wasc-how-photo img { width: 100%; border-radius: 16px; }
+.wasc .wasc-how-photo::after { content: ""; position: absolute; left: -10px; right: 10px; top: 20px; bottom: -20px; background: var(--card-shadow); border-radius: 16px; z-index: -1; }
+.wasc .wasc-steps { display: grid; gap: 20px; }
+.wasc .wasc-step { background: #fff; border-radius: 14px; padding: 26px 30px 28px; display: grid; grid-template-columns: 52px 1fr; gap: 20px; align-items: start; }
+.wasc .wasc-step .wasc-n { width: 52px; height: 52px; border-radius: 50%; background: var(--navy); color: #fff; font-size: 20px; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+.wasc .wasc-step h3 { font-size: 22px; font-weight: 700; color: var(--navy); line-height: 1.3; }
+.wasc .wasc-step p { margin-top: 4px; font-size: 16px; line-height: 26px; }
+.wasc .wasc-trusted { padding: 122px 0 120px; }
+.wasc .wasc-logos { display: grid; grid-template-columns: repeat(5, 1fr); gap: 24px; max-width: 1120px; margin: 36px auto 0; }
+.wasc .wasc-logo-card { height: 112px; border: 1px solid var(--line); border-radius: 14px; background: #fff; display: flex; align-items: center; justify-content: center; padding: 14px; }
+.wasc .wasc-logo-card img { max-height: 82px; width: auto; }
+.wasc .wasc-logo-card.wasc-fnb img { max-height: 62px; }
+.wasc .wasc-logo-card.wasc-rewardsco img { max-height: 80px; }
+.wasc .wasc-logo-card.wasc-toyota img { max-height: 66px; }
+.wasc .wasc-logo-card.wasc-talksure img { max-height: 78px; }
+.wasc .wasc-logo-card.wasc-tsebo img { max-height: 28px; }
+.wasc .wasc-quote { text-align: center; margin-top: 50px; }
+.wasc .wasc-quote svg { width: 40px; height: 34px; color: var(--sky); margin: 0 auto; display: block; }
+.wasc .wasc-quote blockquote { margin: 16px auto 0; max-width: 900px; font-size: 24px; line-height: 36px; font-style: italic; font-weight: 400; }
+.wasc .wasc-quote .wasc-attr { margin-top: 26px; font-size: 15px; color: var(--muted); }
+.wasc .wasc-quote .wasc-attr strong { color: var(--navy); font-weight: 700; }
+.wasc .wasc-enquire { padding: 92px 0 180px; }
+.wasc .wasc-enquire .wasc-tc-note { text-align: center; font-size: 12px; font-weight: 600; color: #9E9E9E; margin-top: 4px; line-height: 1.4; }
+.wasc .wasc-enquire-grid { display: grid; grid-template-columns: 490px 500px; justify-content: space-between; max-width: 1080px; margin: 48px auto 0; }
+.wasc .wasc-features { grid-row: 1; grid-column: 1; }
+.wasc .wasc-form-col { grid-row: 1; grid-column: 2; }
+.wasc .wasc-feature + .wasc-feature { margin-top: 24px; }
+.wasc .wasc-feature h3 { display: flex; align-items: center; gap: 14px; font-size: 20px; font-weight: 600; color: var(--navy); line-height: 1.4; }
+.wasc .wasc-feature h3 svg { width: 24px; height: 24px; flex: none; color: var(--check); }
+.wasc .wasc-feature p { margin-top: 6px; font-size: 15px; line-height: 26px; }
+.wasc .wasc-enquiry-form { display: grid; grid-template-columns: 1fr 1fr; gap: 20px 16px; }
+.wasc .wasc-enquiry-form .wasc-full { grid-column: 1 / -1; }
+.wasc .wasc-enquiry-form input, .wasc .wasc-enquiry-form select { width: 100%; height: 52px; border: 1px solid #DDDEDF; border-radius: 14px; background: #fff; font: inherit; font-size: 15px; color: var(--body); padding: 0 18px; outline: none; }
+.wasc .wasc-enquiry-form input::placeholder { color: #757575; }
+.wasc .wasc-enquiry-form select { padding: 0 18px 0 22px; cursor: pointer; }
+.wasc .wasc-enquiry-form select:invalid { color: var(--body); }
+.wasc .wasc-enquiry-form input:focus, .wasc .wasc-enquiry-form select:focus { border-color: var(--sky); box-shadow: 0 0 0 3px rgba(31,194,244,.18); }
+.wasc .wasc-enquiry-form .wasc-btn-submit { grid-column: 1 / -1; height: 50px; border: 0; border-radius: 14px; background: var(--navy); color: #fff; font: inherit; font-size: 15px; font-weight: 700; text-transform: uppercase; letter-spacing: .3px; cursor: pointer; }
+.wasc .wasc-enquiry-form .wasc-btn-submit:hover { background: #164e73; }
+.wasc .wasc-form-message { grid-column: 1 / -1; display: none; text-align: center; font-weight: 500; color: var(--offer-text); }
+.wasc .wasc-call-us { text-align: center; margin-top: 30px; font-size: 14px; font-weight: 700; color: var(--navy); line-height: 18px; text-transform: uppercase; }
+.wasc .wasc-call-us a { color: var(--navy); }
+.wasc .wasc-terms { background: var(--footer); color: #fff; text-align: center; padding: 54px 24px 58px; }
+.wasc .wasc-terms h2 { font-size: 19px; font-weight: 700; line-height: 1.4; }
+.wasc .wasc-terms p { margin-top: 16px; font-size: 15px; line-height: 26px; }
+.wasc .wasc-terms a { color: #fff; }
+
+@media (max-width: 1180px) {
+  .wasc .wasc-hero-grid, .wasc .wasc-how-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+  .wasc .wasc-hero-logo img { width: 100%; }
+  .wasc .wasc-enquire-grid { grid-template-columns: 1fr 1fr; gap: 48px; }
+  .wasc .wasc-benefit-cards { grid-template-columns: repeat(2, 1fr); }
+  .wasc .wasc-logos { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 900px) {
+  .wasc .wasc-e-cards { grid-template-columns: 1fr; max-width: 520px; margin-left: auto; margin-right: auto; gap: 40px; }
+}
+
+@media (max-width: 767px) {
+  .wasc .wasc-container { padding: 0 24px; }
+  .wasc .wasc-offer-strip { padding: 14px 24px 12px; font-size: 15px; line-height: 23px; }
+  .wasc .wasc-offer-strip strong { font-size: 16px; }
+  .wasc .wasc-offer-strip .wasc-offer-ends { display: none; }
+  .wasc .wasc-offer-strip a { font-weight: 400; display: block; }
+  .wasc .wasc-hero { padding: 40px 0 46px; }
+  .wasc .wasc-hero-grid { grid-template-columns: 1fr; gap: 26px; padding: 0 24px; }
+  .wasc .wasc-hero-logo img { width: 250px; }
+  .wasc .wasc-tagline { margin-top: 18px; font-size: 11px; letter-spacing: .5px; font-weight: 600; }
+  .wasc .wasc-hero-copy h1 { font-size: 30px; line-height: 36px; letter-spacing: 0; }
+  .wasc .wasc-hero-copy p { margin-top: 18px; font-size: 16px; line-height: 25px; }
+  .wasc .wasc-hero-copy .wasc-cta-label { display: none; }
+  .wasc .wasc-hero-copy .wasc-btn-primary { display: block; width: 100%; margin-top: 20px; font-size: 15px; padding: 12px 20px; border-radius: 10px; }
+  .wasc .wasc-hero-copy .wasc-full-copy { display: none; }
+  .wasc .wasc-hero-copy .wasc-short-copy { display: block; }
+  .wasc .wasc-section-title { font-size: 26px; line-height: 32px; }
+  .wasc .wasc-section-sub { font-size: 15px; line-height: 24px; margin-top: 16px; }
+  .wasc .wasc-three-e { padding: 58px 0 50px; }
+  .wasc .wasc-e-cards { margin-top: 36px; gap: 34px; padding-left: 8px; }
+  .wasc .wasc-e-card { padding: 30px 24px 34px; border-radius: 16px; }
+  .wasc .wasc-e-card::before { height: 9px; border-radius: 16px 16px 0 0; }
+  .wasc .wasc-e-card::after { left: -10px; right: 8px; top: 16px; bottom: -16px; border-radius: 16px; }
+  .wasc .wasc-e-card .wasc-num { width: 40px; height: 40px; font-size: 14px; }
+  .wasc .wasc-e-card .wasc-e-img { height: 140px; margin-top: 22px; }
+  .wasc .wasc-e-card .wasc-e-img img { max-height: 140px; }
+  .wasc .wasc-e-card h3 { margin-top: 14px; font-size: 22px; }
+  .wasc .wasc-e-card .wasc-e-sub { margin-top: 10px; font-size: 16px; }
+  .wasc .wasc-e-card .wasc-e-text { margin-top: 12px; font-size: 15px; line-height: 24px; }
+  .wasc .wasc-benefits { padding: 56px 0 56px; }
+  .wasc .wasc-benefit-cards { grid-template-columns: 1fr; gap: 15px; margin-top: 34px; }
+  .wasc .wasc-benefit { display: grid; grid-template-columns: 28px 1fr; gap: 0 20px; text-align: left; padding: 20px 16px 20px 22px; }
+  .wasc .wasc-benefit svg { width: 28px; height: 28px; margin: 3px 0 0; grid-row: 1 / span 2; }
+  .wasc .wasc-benefit h3 { margin-top: 0; font-size: 17px; line-height: 1.4; }
+  .wasc .wasc-benefit p { margin-top: 2px; font-size: 15px; line-height: 24px; }
+  .wasc .wasc-how { padding: 56px 0 56px; }
+  .wasc .wasc-how-grid { grid-template-columns: 1fr; gap: 38px; margin-top: 30px; }
+  .wasc .wasc-how-photo { margin-left: 8px; }
+  .wasc .wasc-how-photo img { border-radius: 20px; }
+  .wasc .wasc-how-photo::after { left: -8px; right: 8px; top: 18px; bottom: -14px; border-radius: 20px; }
+  .wasc .wasc-steps { gap: 14px; }
+  .wasc .wasc-step { grid-template-columns: 40px 1fr; gap: 16px; padding: 20px 20px 24px; border-radius: 16px; }
+  .wasc .wasc-step .wasc-n { width: 40px; height: 40px; font-size: 16px; }
+  .wasc .wasc-step h3 { font-size: 18px; }
+  .wasc .wasc-step p { margin-top: 2px; font-size: 15px; line-height: 24px; }
+  .wasc .wasc-trusted { padding: 56px 0 56px; }
+  .wasc .wasc-logos { grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 28px; }
+  .wasc .wasc-logo-card { height: 86px; border-radius: 16px; }
+  .wasc .wasc-logo-card.wasc-tsebo { grid-column: 1 / -1; }
+  .wasc .wasc-logo-card.wasc-fnb img { max-height: 48px; }
+  .wasc .wasc-logo-card.wasc-rewardsco img { max-height: 62px; }
+  .wasc .wasc-logo-card.wasc-toyota img { max-height: 52px; }
+  .wasc .wasc-logo-card.wasc-talksure img { max-height: 62px; }
+  .wasc .wasc-logo-card.wasc-tsebo img { max-height: 28px; }
+  .wasc .wasc-quote { margin-top: 36px; }
+  .wasc .wasc-quote svg { width: 32px; height: 28px; }
+  .wasc .wasc-quote blockquote { font-size: 19px; line-height: 29px; margin-top: 14px; }
+  .wasc .wasc-quote .wasc-attr { margin-top: 12px; line-height: 20px; }
+  .wasc .wasc-quote .wasc-attr .wasc-sep { display: none; }
+  .wasc .wasc-quote .wasc-attr .wasc-since { display: block; }
+  .wasc .wasc-enquire { padding: 56px 0 56px; }
+  .wasc .wasc-enquire .wasc-tc-note { font-size: 12px; margin-top: 0; }
+  .wasc .wasc-enquire-grid { grid-template-columns: 1fr; gap: 0; margin-top: 28px; }
+  .wasc .wasc-form-col { grid-column: 1; grid-row: 1; }
+  .wasc .wasc-features { grid-column: 1; grid-row: 2; margin-top: 42px; }
+  .wasc .wasc-enquiry-form { grid-template-columns: 1fr; gap: 14px; }
+  .wasc .wasc-enquiry-form .wasc-btn-submit { margin-top: 4px; }
+  .wasc .wasc-enquiry-form input, .wasc .wasc-enquiry-form select { height: 52px; border-radius: 16px; font-size: 15px; }
+  .wasc .wasc-enquiry-form .wasc-btn-submit { height: 52px; border-radius: 16px; font-size: 15px; }
+  .wasc .wasc-call-us { margin-top: 28px; }
+  .wasc .wasc-feature + .wasc-feature { margin-top: 24px; }
+  .wasc .wasc-feature h3 { font-size: 17px; gap: 12px; }
+  .wasc .wasc-feature h3 svg { width: 22px; height: 22px; }
+  .wasc .wasc-feature p { margin-top: 6px; font-size: 15px; line-height: 24px; }
+  .wasc .wasc-terms { padding: 48px 24px 34px; }
+  .wasc .wasc-terms h2 { font-size: 18px; }
+  .wasc .wasc-terms p { margin-top: 14px; font-size: 14px; line-height: 24px; }
+}
+
+.wasc .wasc-short-copy { display: none; }

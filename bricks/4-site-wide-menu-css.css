@@ -1,0 +1,5 @@
+/* Paste into Bricks > Settings > Custom code > Custom CSS (site-wide).
+   Styles the "Water@School is Cool" menu tab: the @ in navy, and a sky-blue underline when you're on the page. */
+.wasc-nav-at { color: #1C618E; }
+.menu-wasc.current-menu-item > a,
+.menu-wasc > a[aria-current="page"] { color: #1FC2F4 !important; border-bottom: 2px solid #1FC2F4; }
