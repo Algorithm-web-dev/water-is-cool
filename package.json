@@ -1,0 +1,8 @@
+{
+  "name": "water-is-cool",
+  "private": true,
+  "description": "Water@School is Cool landing page (static page + Vercel function for the enquiry form)",
+  "dependencies": {
+    "nodemailer": "6.9.16"
+  }
+}

@@ -217,7 +217,13 @@
     font: inherit; font-size: 15px; font-weight: 700; text-transform: uppercase; letter-spacing: .3px; cursor: pointer;
   }
   .enquiry-form .btn-submit:hover { background: #164e73; }
-  .form-message { grid-column: 1 / -1; display: none; text-align: center; font-weight: 500; color: var(--offer-text); }
+  .form-error { grid-column: 1 / -1; color: #b3261e; font-weight: 500; text-align: center; line-height: 1.5; }
+  .form-error[hidden], .thanks[hidden], .enquiry-form[hidden] { display: none; }
+  .hp { position: absolute !important; left: -9999px !important; width: 1px; height: 1px; overflow: hidden; }
+  .thanks { background: #fff; border-radius: 14px; padding: 36px 28px; text-align: center; }
+  .thanks h3 { font-size: 22px; font-weight: 700; color: var(--navy); line-height: 1.3; }
+  .thanks p { margin-top: 10px; }
+  .enquiry-form .btn-submit:disabled { opacity: .7; cursor: wait; }
   .call-us { text-align: center; margin-top: 30px; font-size: 14px; font-weight: 700; color: var(--navy); line-height: 18px; text-transform: uppercase; }
   .call-us a { color: var(--navy); }
 
@@ -531,8 +537,14 @@
         </div>
 
         <div class="form-col">
-          <!-- Same fields as the existing Enquire Now form. Point "action" at that form's handler before going live. -->
-          <form class="enquiry-form" id="enquiry-form" method="post" action="#">
+          <!-- Same fields as the existing Enquire Now form. Sent by the Vercel function in api/enquire.js to the sales inbox. -->
+          <div class="thanks" id="form-thanks" role="status" hidden>
+            <h3>Thank you!</h3>
+            <p>Our team will be in touch to book your free assessment.</p>
+          </div>
+          <form class="enquiry-form" id="enquiry-form" method="post" action="/api/enquire">
+            <p class="form-error" id="form-error" role="alert" hidden></p>
+            <div class="hp" aria-hidden="true"><label>Leave this empty <input type="text" name="wasc_website" tabindex="-1" autocomplete="off"></label></div>
             <input type="text" name="first_name" placeholder="First Name *" aria-label="First Name" autocomplete="given-name" required>
             <input type="text" name="last_name" placeholder="Last Name *" aria-label="Last Name" autocomplete="family-name" required>
             <input class="full" type="email" name="email" placeholder="Your Email *" aria-label="Your Email" autocomplete="email" required>
@@ -541,13 +553,12 @@
               <option value="" selected disabled>Number of Learners *</option>
               <option value="0-300">0-300</option>
               <option value="301-700">301-700</option>
-              <option value="701-1200">701-1 200</option>
-              <option value="1200+">1 200+</option>
+              <option value="701-1 200">701-1 200</option>
+              <option value="1 200+">1 200+</option>
             </select>
             <input type="tel" name="phone" placeholder="Phone Number *" aria-label="Phone Number" autocomplete="tel" required>
             <input type="text" name="postal_code" placeholder="Postal Code *" aria-label="Postal Code" autocomplete="postal-code" inputmode="numeric" required>
             <button class="btn-submit" type="submit">Submit</button>
-            <p class="form-message" id="form-message" role="status">Thank you! Our team will be in touch to book your free assessment.</p>
           </form>
           <p class="call-us">Call us now<br><a href="tel:0861100185">086 110 0185</a></p>
         </div>
@@ -591,14 +602,40 @@
     });
   })();
 
-  // Enquiry form: until it is wired to the live Enquire Now handler, show a confirmation instead of posting.
+  // Enquiry form: sends to /api/enquire (api/enquire.js), which emails the sales inbox.
+  // Without JavaScript the form still posts normally and the function redirects back with ?sent=1 or ?error=.
   (function () {
     var form = document.getElementById('enquiry-form');
+    var thanks = document.getElementById('form-thanks');
+    var errorBox = document.getElementById('form-error');
+    var button = form.querySelector('.btn-submit');
+
+    function showThanks() { form.hidden = true; thanks.hidden = false; }
+    function showError(message) { errorBox.textContent = message; errorBox.hidden = false; }
+
+    var params = new URLSearchParams(location.search);
+    if (params.get('sent') === '1') showThanks();
+    else if (params.get('error')) showError(params.get('error'));
+
     form.addEventListener('submit', function (e) {
-      if (form.getAttribute('action') !== '#') return;
       e.preventDefault();
-      document.getElementById('form-message').style.display = 'block';
-      form.querySelector('.btn-submit').disabled = true;
+      errorBox.hidden = true;
+      button.disabled = true;
+      button.textContent = 'Sending…';
+      fetch(form.action, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+        body: JSON.stringify(Object.fromEntries(new FormData(form)))
+      })
+        .then(function (r) { return r.json().catch(function () { return { ok: false }; }); })
+        .then(function (data) {
+          if (data.ok) return showThanks();
+          showError(data.error || 'Sorry, something went wrong sending your request. Please call us on 086 110 0185.');
+        })
+        .catch(function () {
+          showError('Sorry, something went wrong sending your request. Please call us on 086 110 0185.');
+        })
+        .then(function () { button.disabled = false; button.textContent = 'Submit'; });
     });
   })();
 </script>
