@@ -1,6 +1,13 @@
-// Vercel serverless function: emails "Book A Free Assessment" requests to the sales inbox.
-// SMTP details come from Vercel environment variables (Project > Settings > Environment Variables):
-//   SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS   required, same account WP Mail SMTP uses on topcoolers.co.za
+// Vercel serverless function: delivers "Book A Free Assessment" requests.
+// Two delivery routes, configured with Vercel environment variables (Project > Settings > Environment Variables).
+// Set up either one, or both: the request succeeds when at least one route delivers it.
+//
+// 1. Google Sheet (google-apps-script/leads.gs): adds a row to the leads sheet and emails the sales inbox.
+//   LEADS_WEBHOOK_URL      the Apps Script web app URL
+//   LEADS_WEBHOOK_SECRET   the same secret as SECRET in leads.gs
+//
+// 2. SMTP email:
+//   SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS   e.g. Gmail: smtp.gmail.com, 465, the address, an app password
 //   SMTP_SECURE   optional, "true" for port 465 (default: true when SMTP_PORT is 465)
 //   MAIL_FROM     optional, sender address (default: SMTP_USER)
 //   MAIL_TO       optional, recipient (default: sales@topvending.co.za)
@@ -48,13 +55,40 @@ module.exports = async function handler(req, res) {
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.email)) return reply(req, res, 400, 'Please enter a valid email address.');
   if (!LEARNERS.includes(v.number_of_learners)) return reply(req, res, 400, 'Please choose the number of learners.');
 
-  const { SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, SMTP_SECURE, MAIL_FROM, MAIL_TO } = process.env;
+  const routes = [];
+  if (process.env.LEADS_WEBHOOK_URL) routes.push(['Google Sheet', sendToSheet]);
+  if (process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASS) routes.push(['SMTP', sendEmail]);
   const failMessage = 'Sorry, something went wrong sending your request. Please call us on 086 110 0185.';
-  if (!SMTP_HOST || !SMTP_USER || !SMTP_PASS) {
-    console.error('Enquiry not sent: SMTP_HOST, SMTP_USER and SMTP_PASS must be set in Vercel.');
+  if (!routes.length) {
+    console.error('Enquiry not sent: set LEADS_WEBHOOK_URL, or SMTP_HOST, SMTP_USER and SMTP_PASS, in Vercel.');
     return reply(req, res, 500, failMessage);
   }
 
+  const results = await Promise.allSettled(routes.map(([, send]) => send(v)));
+  results.forEach((r, i) => {
+    if (r.status === 'rejected') console.error(`Enquiry not sent via ${routes[i][0]}:`, r.reason && r.reason.message);
+  });
+  if (!results.some((r) => r.status === 'fulfilled')) return reply(req, res, 502, failMessage);
+  return reply(req, res, 200);
+};
+
+async function sendToSheet(v) {
+  const response = await fetch(process.env.LEADS_WEBHOOK_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ secret: process.env.LEADS_WEBHOOK_SECRET || '', ...v }),
+    redirect: 'follow',
+  });
+  const text = await response.text();
+  let data = {};
+  try { data = JSON.parse(text); } catch (e) { /* Apps Script returned HTML: usually a deployment or access problem */ }
+  if (!response.ok || !data.ok) {
+    throw new Error(`webhook answered ${response.status}: ${(data.error || text).slice(0, 200)}`);
+  }
+}
+
+async function sendEmail(v) {
+  const { SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, SMTP_SECURE, MAIL_FROM, MAIL_TO } = process.env;
   const port = Number(SMTP_PORT) || 587;
   const transporter = nodemailer.createTransport({
     host: SMTP_HOST,
@@ -62,19 +96,12 @@ module.exports = async function handler(req, res) {
     secure: SMTP_SECURE ? SMTP_SECURE === 'true' : port === 465,
     auth: { user: SMTP_USER, pass: SMTP_PASS },
   });
-
   const lines = Object.entries(FIELDS).map(([key, label]) => `${label}: ${v[key]}`);
-  try {
-    await transporter.sendMail({
-      from: MAIL_FROM || SMTP_USER,
-      to: MAIL_TO || 'sales@topvending.co.za',
-      replyTo: { name: `${v.first_name} ${v.last_name}`, address: v.email },
-      subject: `Water@School is Cool: Free Assessment request from ${v.school_name}`,
-      text: 'New Book A Free Assessment request from the Water@School is Cool page:\n\n' + lines.join('\n'),
-    });
-  } catch (err) {
-    console.error('Enquiry not sent:', err.message);
-    return reply(req, res, 502, failMessage);
-  }
-  return reply(req, res, 200);
-};
+  await transporter.sendMail({
+    from: MAIL_FROM || SMTP_USER,
+    to: MAIL_TO || 'sales@topvending.co.za',
+    replyTo: { name: `${v.first_name} ${v.last_name}`, address: v.email },
+    subject: `Water@School is Cool: Free Assessment request from ${v.school_name}`,
+    text: 'New Book A Free Assessment request from the Water@School is Cool page:\n\n' + lines.join('\n'),
+  });
+}
