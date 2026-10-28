@@ -34,5 +34,5 @@ It runs as a standalone site on Vercel at **wateratschooliscool.co.za** (the add
 
 - **Enquiry form:** submit it once on the live site and confirm the email reaches sales@topvending.co.za (subject: *Water@School is Cool: Free Assessment request from [school]*). If it fails, the visitor sees an error with the phone number, and the reason is in Vercel → Logs.
 - **Offer strip:** the green "Install Now, Pay Nothing Until 2027!" strip removes itself automatically after 30 November 2026 (SAST).
-- **Main menu links:** Why Us / Our Clients / Our Range must point at the real topcoolers.co.za pages.
+- **Main menu links:** the logo goes to https://topcoolers.co.za/; Why Us, Our Clients and Our Range go to `#why-us`, `#clients` and `#range` on the topcoolers.co.za homepage. Update them if those sections are renamed.
 - **Images:** the assets were cut from the mockup PDF. Replace them with the original files if you have them for sharper results.
