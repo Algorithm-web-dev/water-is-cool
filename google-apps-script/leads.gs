@@ -30,11 +30,9 @@ function doPost(e) {
   }
   if (!SECRET || data.secret !== SECRET) return reply({ ok: false, error: 'Wrong secret' });
 
-  // Stops a value like "=HYPERLINK(...)" from being treated as a formula in the sheet
-  const clean = (value) => {
-    const text = String(value == null ? '' : value).slice(0, 200);
-    return /^[=+\-@]/.test(text) ? "'" + text : text;
-  };
+  // The leading ' makes Sheets store every value as plain text: keeps the 0 in phone numbers and postal codes,
+  // and stops a value like "=HYPERLINK(...)" from being treated as a formula. Sheets doesn't show the '.
+  const clean = (value) => "'" + String(value == null ? '' : value).slice(0, 200);
 
   const lock = LockService.getScriptLock();
   lock.waitLock(10000);
